@@ -3,8 +3,17 @@
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
         <a class="navbar-brand todolist-nav" href="/">Todolist</a>
+        <% if user_signed_in? %>
+        <div class="dropdown-account">
+          <a href="<%= edit_user_registration_path %>" class="far fa-user user-icon dropbtn"></a>
+          <div class="dropdown-account-content">
+            <%= link_to 'Sign out', destroy_user_session_path, class: 'link-style', method: :delete %>
+          </div>
+        </div>
+        <% else %>
         <a href="<%= new_user_session_path %>" class="btn btn-outline-light log-in">Log In</a>
         <a href="<%= new_user_registration_path %>" class="btn btn-outline-light sign-up">Sign Up</a>
+        <% end %>
       </div>
     </nav>
   </div>

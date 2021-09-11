@@ -20,3 +20,35 @@
 .todolist-nav:hover {
   color: #f8f9fa;
 }
+
+.user-icon {
+  margin-left: auto;
+  color: white;
+  font-size: 2rem;
+}
+.user-icon:hover {
+  color: white;
+}
+
+.dropdown-account-content {
+display: none;
+position: absolute;
+right: 0;
+min-width: 100px;
+z-index: 1;
+padding-top: 10px;
+}
+
+.dropdown-account-content a {
+color: white;
+padding: 5px 10px;
+text-decoration: none;
+display: block;
+text-align: center;
+border: 1px solid white;
+border-radius: 0.35rem;
+}
+
+.dropdown-account-content a:hover {background-color: white; color: black;}
+
+.dropdown-account:hover .dropdown-account-content {display: block;}
