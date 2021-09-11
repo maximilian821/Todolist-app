@@ -1,0 +1,26 @@
+.devise-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: 'Urbanist', sans-serif;
+}
+.devise-content {
+  padding-top: 3rem;
+  width: 35%;
+}
+.link-style {
+  text-decoration: none;
+  color: white;
+}
+.link-style:hover {
+  color: white;
+}
+.actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-action {
+  padding: 0.35rem 2rem;
+}
