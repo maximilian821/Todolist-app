@@ -1,2 +1,17 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="container">
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand todolist-nav" href="/">Todolist</a>
+      <button type="button" class="btn btn-outline-light log-in">Log In</button>
+      <button type="button" class="btn btn-outline-light sign-up">Sign Up</button>
+    </div>
+  </nav>
+
+  <div class="get-started">
+    <p class="message">Get everything in order with <br/><span class="todolist">Todolist</span></p>
+    <button type="button" class="btn btn-lg btn-outline-success btn-get-started">Get started</button>
+  </div>
+
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+</div>
