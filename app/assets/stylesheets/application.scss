@@ -1,10 +1,11 @@
 @import 'bootstrap/scss/bootstrap.scss';
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Calistoga&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import 'navbar';
 @import 'get-started';
 @import 'devise-styles';
+@import 'app-styles';
 
 body {
   background: rgb(22,0,36);
@@ -12,10 +13,33 @@ body {
 }
 
 p {
-  color: #f8f9fa;
+  margin: 0;
 }
 
 .alert-notice {
   border: none;
   text-align: center;
+  color: white;
+}
+
+.sidebar-button::after {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
+  content: "";
+  background-image: url(arrow.svg);
+  background-repeat: no-repeat;
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(298deg) brightness(102%) contrast(102%);
+  background-size: 1.5rem;
+  transition: transform .2s ease-in-out;
+  transition-property: transform;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+  transition-delay: 0s;
+}
+
+.sidebar-button:not(.collapsed)::after {
+  transform: rotate(-180deg);
 }

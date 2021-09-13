@@ -17,7 +17,7 @@
     <%= render 'layouts/navbar' %>
 
     <div class="container">
-    <% if notice %>
+    <% if notice && !notice.blank? %>
     <p class="alert-notice"><%= notice %></p>
     <% end %>
     <% if alert %>
@@ -26,5 +26,7 @@
     </div>
 
     <%= yield %>
+
+    <%= render 'home/popups' %>
   </body>
 </html>

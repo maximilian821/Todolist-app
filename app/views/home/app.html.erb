@@ -1,0 +1,25 @@
+<div class="app-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-2">
+        <%= render 'sidebar' %>
+      </div>
+
+      <div class="col-10">
+        <div id="app-container">
+          <% if !@tasks.blank? %>
+          <% @tasks.each do |task| %>
+          <%= render partial: 'tasks/task', locals: { task: task } %>
+          <% end %>
+          <% else %>
+          <div class="msg">
+            <div class="msg-container">
+              <p>You don't have any tasks yet<br /><a class="open-popup" data-popup="popup2">Create one!</a></p>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

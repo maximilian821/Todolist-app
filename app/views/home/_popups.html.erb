@@ -1,0 +1,83 @@
+<div id="popup1" class="popup">
+  <div class="popup-content">
+    <div class="popup-header">
+      <span class="close">&times;</span>
+    </div>
+    <div class="popup-body">
+
+      <div class="category-form">
+        <%= form_with model: @category do |f| %>
+        <h2>Create new category</h2>
+        <div class="field">
+          <%= f.label :category_name %><br />
+          <%= f.text_field :name, class: 'form-control mb-3' %>
+        </div>
+        <div class="actions">
+          <%= f.submit "Create category", class: 'btn btn-dark btn-action mt-2' %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="popup2" class="popup">
+  <div class="popup-content">
+    <div class="popup-header">
+      <span class="close">&times;</span>
+    </div>
+    <div class="popup-body">
+
+      <div class="category-form">
+        <%= form_with model: @task do |f| %>
+
+        <h2>Create new task</h2>
+        <div class="field">
+          <%= f.label :task_title, 'Task title:' %><br />
+          <%= f.text_field :title, class: 'form-control mb-3' %>
+        </div>
+        <div class="field">
+          <%= f.label :task_body, 'Task body:' %><br />
+          <%= f.text_area :body, class: 'form-control mb-3' %>
+        </div>
+        <div class="field mb-3">
+          <label for="category-select">Select category:</label>
+          <select id="category-select" class="form-select" size="3" name="task[category]" aria-label="size 3 select example">
+            <option selected>without category</option>
+            <option>category1</option>
+          </select>
+        </div>
+        <div class="actions">
+          <%= f.submit "Create task", class: 'btn btn-dark btn-action mt-2' %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+  let popupsToggle = document.querySelectorAll('.open-popup');
+  let popupsClose = document.querySelectorAll('.close');
+
+  popupsToggle.forEach(element => {
+    element.addEventListener('click', function () {
+      let popupName = element.getAttribute('data-popup');
+      document.getElementById(popupName).style.display = 'block';
+    })
+  });
+
+  popupsClose.forEach(element => {
+    element.addEventListener('click', function () {
+      let popup = element.closest('.popup');
+      popup.style.display = 'none';
+    })
+  });
+
+  window.onclick = function (e) {
+    if (e.target.classList.contains('popup')) {
+      e.target.style.display = 'none';
+    }
+  }
+</script>

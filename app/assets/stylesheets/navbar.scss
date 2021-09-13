@@ -2,21 +2,40 @@
   height: 122px;
 }
 
+.app-nav-link {
+  margin-left: auto;
+  margin-right: 3rem;
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: white;
+  font-family: 'Urbanist', sans-serif;
+}
+.app-nav-link:hover {
+  color: white;
+  cursor: pointer;
+}
+
+
 .log-in {
   border-radius: 1rem;
   padding: 0.5rem 1.5rem;
   margin-left: auto;
   margin-right: 10px;
+  border-width: 1.75px;
 }
+
 .sign-up {
   border-radius: 1rem;
   padding: 0.5rem 1.5rem;
+  border-width: 1.75px;
 }
+
 .todolist-nav {
   font-family: 'Dancing Script', cursive;
   color: #f8f9fa;
   font-size: 4rem;
 }
+
 .todolist-nav:hover {
   color: #f8f9fa;
 }
@@ -24,8 +43,10 @@
 .user-icon {
   margin-left: auto;
   color: white;
-  font-size: 2rem;
+  font-size: 2.5rem;
+  text-decoration: none;
 }
+
 .user-icon:hover {
   color: white;
 }

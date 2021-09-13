@@ -1,0 +1,16 @@
+<div class="app-container">
+  <div class="container app-form-container">
+    <div class="app-form">
+      <%= form_with model: @category do |f| %>
+      <div class="field">
+        <%= f.label :name, 'Category name:' %><br />
+        <%= f.text_field :name, class: 'form-control mb-3' %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Create category", class: 'btn btn-outline-light btn-action mt-2' %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

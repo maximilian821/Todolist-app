@@ -1,0 +1,25 @@
+<ul class="sidebar">
+  <li>
+    <%= link_to 'All tasks', app_path, class: 'app-link', data: { turbolinks: "false" } %>
+  </li>
+  <li>
+    <div>
+      <button class="sidebar-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+        aria-expanded="false" aria-controls="collapseOne">
+        Categories
+      </button>
+
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne">
+        <ul class="sidebar sub">
+          <li>
+            <a class="category-item add-category open-popup" data-popup="popup1">add category</a>
+          </li>
+          <li>
+            <p><a data-url="/app/0" data-remote="true" class="category-item cat">without category</a></p>
+          </li>
+          <%= render partial: "category", collection: @categories %>
+        </ul>
+      </div>
+    </div>
+  </li>
+</ul>
