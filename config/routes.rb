@@ -3,10 +3,14 @@ Rails.application.routes.draw do
   root to: 'home#index'
   get 'app', to: 'home#app'
   get 'users', to: redirect('/app')
-  resources :categories, path: 'app', except: [:index] do
-    resources :tasks, only: [:index]
-  end
+  get 'app/tasks', to: redirect('/app')
+  get 'app/category', to: redirect('/app')
   scope :app do
     resources :tasks, except: [:index]
+  end
+  scope :app do
+    resources :categories, except: [:index] do
+      resources :tasks, only: [:index]
+    end
   end
 end
