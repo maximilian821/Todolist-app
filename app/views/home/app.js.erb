@@ -1,0 +1,10 @@
+$('#tasks').empty();
+$('#controls').empty();
+$('#controls').append("<%= j render 'home/category_controls' %>");
+<% if @tasks.length == 0 %>
+  $('#tasks').prepend("<%= j render 'home/message' %>");
+  <% else %>
+  <% @tasks.each do |task| %>
+    $('#tasks').prepend("<%= j render 'tasks/task', task: task %>");
+  <% end %>
+<% end %>
