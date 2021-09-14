@@ -4,7 +4,7 @@
       <span class="close">&times;</span>
     </div>
     <div class="popup-body">
-
+      <% if defined?(@category) %>
       <div class="category-form">
         <%= form_with model: @category do |f| %>
         <h2>Create new category</h2>
@@ -17,6 +17,7 @@
         </div>
         <% end %>
       </div>
+      <% end %>
     </div>
   </div>
 </div>
@@ -27,7 +28,7 @@
       <span class="close">&times;</span>
     </div>
     <div class="popup-body">
-
+      <% if defined?(@task) %>
       <div class="category-form">
         <%= form_with model: @task do |f| %>
 
@@ -42,9 +43,11 @@
         </div>
         <div class="field mb-3">
           <label for="category-select">Select category:</label>
-          <select id="category-select" class="form-select" size="3" name="task[category]" aria-label="size 3 select example">
+          <select id="category-select" class="form-select" size="3" name="task[category_id]" aria-label="size 3 select example">
             <option selected>without category</option>
-            <option>category1</option>
+            <% @categories.each do |cat| %>
+            <option value="<%= cat.id %>"><%= cat.name %></option>
+            <% end %>
           </select>
         </div>
         <div class="actions">
@@ -53,6 +56,7 @@
       </div>
       <% end %>
     </div>
+    <% end %>
   </div>
 </div>
 </div>

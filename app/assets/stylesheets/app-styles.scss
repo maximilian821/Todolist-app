@@ -186,6 +186,8 @@
 
 .category-item {
   text-decoration: none;
+  background-color: transparent;
+  border: none;
 }
 
 .cat {
@@ -194,4 +196,32 @@
 
 .cat:hover {
   color: white;
+}
+.dropdown-toggle {
+  text-decoration: none;
+  color: rgb(158, 158, 158);
+  font-size: 1.25rem;
+}
+
+.dropdown-toggle:hover {
+  color: rgb(158, 158, 158);
+}
+
+.dropdown-toggle::after {
+  content: none;
+}
+
+.cat-controls {
+  text-decoration: none;
+  color: white;
+}
+
+.cat-controls:hover {
+  color: white;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.cat-p {
+  padding: 1px 6px;
 }

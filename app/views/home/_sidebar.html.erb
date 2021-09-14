@@ -12,10 +12,10 @@
       <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne">
         <ul class="sidebar sub">
           <li>
-            <a class="category-item add-category open-popup" data-popup="popup1">add category</a>
+            <a class="category-item add-category cat-p open-popup" data-popup="popup1">add category</a>
           </li>
           <li>
-            <p><a data-url="/app/0" data-remote="true" class="category-item cat">without category</a></p>
+            <p><a href="/app?id=0" data-turbolinks="false" class="category-item cat-p cat">without category</a></p>
           </li>
           <%= render partial: "category", collection: @categories %>
         </ul>
