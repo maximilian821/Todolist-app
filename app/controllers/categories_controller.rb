@@ -16,17 +16,23 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    if params[:id] == 0
-      @tasks = Task.where(category_id: nil)
+    if params[:id] == "0"
+      @tasks = Task.where(category_id: nil).order(created_at: :desc)
     else
-      category = Category.find(params[:id])
-      @tasks = category.tasks
+      category = Category.find_by(name: params[:category])
+      @tasks = category.tasks.order(created_at: :desc)
     end
+  end
+
+  def destroy
+    category = Category.find(params[:id])
+    category.destroy
+    redirect_to app_path
   end
 
   private
 
   def category_params
-    params.require(:category).permit(:name)
+    params.require(:category).permit(:name, :category)
   end
 end

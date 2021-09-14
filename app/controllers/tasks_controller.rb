@@ -1,10 +1,14 @@
 class TasksController < ApplicationController
+  def show
+  end
+
   def new
     @task = Task.new
   end
 
   def create
     @task = Task.new(task_params)
+    @categories = Category.all
     if @task.save
       redirect_to app_url
     else
@@ -12,7 +16,19 @@ class TasksController < ApplicationController
     end
   end
 
-  def show
+  def edit
+    @task = Task.find(params[:id])
+    @categories = Category.all
+  end
+
+  def update
+    @task = Task.find(params[:id])
+    @categories = Category.all
+    if @task.update(task_params)
+      redirect_to app_url
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -24,6 +40,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :body)
+    params.require(:task).permit(:title, :body, :category_id)
   end
 end
