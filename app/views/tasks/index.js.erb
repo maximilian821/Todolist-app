@@ -1,0 +1,9 @@
+$('#tasks').empty();
+
+<% if @tasks.length == 0 %>
+  $('#tasks').prepend("<%= j render partial: 'tasks/message', locals: {status: @status} %>");
+  <% else %>
+  <% @tasks.each do |task| %>
+    $('#tasks').prepend("<%= j render 'tasks/task', task: task %>");
+  <% end %>
+<% end %>

@@ -99,3 +99,13 @@
 .sidebar-button:not(.collapsed)::after {
   transform: rotate(-180deg);
 }
+
+.category-text {
+  margin-left: auto;
+  font-size: 0.9rem;
+  color: rgb(87, 87, 87);
+}
+
+.sidebar-link a:hover {
+  text-decoration: underline;
+}

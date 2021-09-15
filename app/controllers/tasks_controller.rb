@@ -1,6 +1,21 @@
 class TasksController < ApplicationController
-  def show
+  def index
+    if params[:completed] == 'true'
+      @status = :completed
+      @tasks = Task.where(user_id: current_user.id).where(status: :completed).order(created_at: :asc)
+    elsif params[:uncompleted] == 'true'
+      @status = :uncompleted
+      @tasks = Task.where(user_id: current_user.id).where(status: :uncompleted).order(created_at: :asc)
+    else
+      @tasks = Task.where(user_id: current_user.id).order(created_at: :desc)
+    end
+
+    respond_to do |format|
+      format.js
+    end
   end
+
+  def show; end
 
   def new
     @task = Task.new
@@ -8,7 +23,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-    @categories = Category.all
+    @categories = Category.where(user_id: current_user.id)
     if @task.save
       redirect_to app_url
     else
@@ -26,7 +41,7 @@ class TasksController < ApplicationController
 
   def edit
     @task = Task.find(params[:id])
-    @categories = Category.all
+    @categories = Category.where(user_id: current_user.id)
   end
 
   def update
@@ -40,9 +55,11 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    task = Task.find params[:id]
-    task.destroy
-    redirect_to app_path
+    @task = Task.find params[:id]
+    @task.delete
+    respond_to do |format|
+      format.js
+    end
   end
 
   private

@@ -1,6 +1,12 @@
 <ul class="sidebar">
-  <li>
+  <li class="mb-1 sidebar-link">
     <%= link_to 'All tasks', app_path, class: 'app-link', data: { turbolinks: "false" } %>
+  </li>
+  <li class="mb-1 sidebar-link">
+    <%= link_to 'Tasks to do', tasks_path(uncompleted: :true), class: 'app-link', remote: true %>
+  </li>
+  <li class="mb-1 sidebar-link">
+    <%= link_to 'Completed tasks', tasks_path(completed: :true), class: 'app-link', remote: true %>
   </li>
   <li>
     <div>
