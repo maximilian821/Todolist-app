@@ -15,7 +15,7 @@
             <a class="category-item add-category cat-p open-popup" data-popup="popup1">add category</a>
           </li>
           <li>
-            <p><a href="/app?id=0" data-turbolinks="false" class="category-item cat-p cat">without category</a></p>
+            <p><a href="/app" data-params="no_category=true" data-turbolinks="false" class="category-item cat-p cat" data-remote="true">without category</a></p>
           </li>
           <%= render partial: "category", collection: @categories %>
         </ul>

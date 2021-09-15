@@ -1,5 +1,6 @@
 $('#tasks').empty();
 $('#controls').empty();
+
 $('#controls').append("<%= j render 'home/category_controls' %>");
 <% if @tasks.length == 0 %>
   $('#tasks').prepend("<%= j render 'home/message' %>");

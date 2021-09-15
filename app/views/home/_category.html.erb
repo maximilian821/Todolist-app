@@ -1,6 +1,5 @@
 <li>
-  <%= form_with scope: :filters, url: app_path, method: "GET", id: 'filter-form', local: false do |f| %>
-
+  <%= form_with scope: :filters, url: app_path, method: "GET", local: false do |f| %>
   <input type="submit" value="<%= category.name %>" name="category" class="cat category-item" />
   <% end %>
 </li>
