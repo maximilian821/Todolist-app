@@ -1,0 +1,101 @@
+.add-category:hover {
+  color: rgb(173, 173, 173);
+}
+
+.category-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
+.msg {
+  display: flex;
+  font-size: 1.25rem;
+  text-align: center;
+  a {
+    color: white;
+  }
+  a:hover {
+    color: white;
+    cursor: pointer;
+  }
+  .msg-container {
+    border: 2px solid white;
+    border-radius: 0.5rem;
+    padding: 1rem 2rem;
+    margin-left: 25%;
+  }
+}
+
+.sidebar {
+  list-style: none;
+  list-style-type: none;
+  padding: 0;
+  font-size: 1.5rem;
+}
+
+.sidebar .sub {
+  font-size: 1.2rem;
+}
+
+.sidebar-button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  display: flex;
+  width: 100%;
+}
+
+.category-item {
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+}
+
+.cat {
+  color: white;
+}
+
+.cat:hover {
+  color: white;
+}
+
+.cat-controls {
+  text-decoration: none;
+  color: white;
+}
+
+.cat-controls:hover {
+  color: white;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.cat-p {
+  padding: 1px 6px;
+}
+
+.sidebar-button::after {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
+  content: "";
+  background-image: url(arrow.svg);
+  background-repeat: no-repeat;
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(298deg) brightness(102%) contrast(102%);
+  background-size: 1.5rem;
+  transition: transform .2s ease-in-out;
+  transition-property: transform;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+  transition-delay: 0s;
+}
+
+.sidebar-button:not(.collapsed)::after {
+  transform: rotate(-180deg);
+}

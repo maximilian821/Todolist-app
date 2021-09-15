@@ -1,0 +1,13 @@
+<% if @task.status == 'completed' %>
+
+  $('#title<%= @task.id %>').css('text-decoration', 'line-through');
+  $('#change-status-<%= @task.id %>').html('<%= link_to 'Mark as uncompleted', update_status_task_path(@task, status: 'uncompleted'), data: {method: :patch}, class: 'dropdown-item', remote: true %>')
+  $('#status-<%= @task.id %>').html('Status: <span style="color: green;"><%= @task.status %></span>')
+
+<% else %>
+
+  $('#title<%= @task.id %>').css('text-decoration', 'none');
+  $('#change-status-<%= @task.id %>').html('<%= link_to 'Mark as completed', update_status_task_path(@task, status: 'completed'), data: {method: :patch}, class: 'dropdown-item', remote: true %>')
+  $('#status-<%= @task.id %>').html('Status: <span style="color: red;"><%= @task.status %></span>')
+
+<% end %>

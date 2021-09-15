@@ -6,6 +6,8 @@
 @import 'get-started';
 @import 'devise-styles';
 @import 'app-styles';
+@import 'popups';
+@import 'categories';
 
 body {
   background: rgb(22,0,36);
@@ -20,26 +22,4 @@ p {
   border: none;
   text-align: center;
   color: white;
-}
-
-.sidebar-button::after {
-  flex-shrink: 0;
-  width: 1.5rem;
-  height: 1.5rem;
-  margin-left: 0.5rem;
-  margin-top: 0.5rem;
-  content: "";
-  background-image: url(arrow.svg);
-  background-repeat: no-repeat;
-  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(298deg) brightness(102%) contrast(102%);
-  background-size: 1.5rem;
-  transition: transform .2s ease-in-out;
-  transition-property: transform;
-  transition-duration: 0.2s;
-  transition-timing-function: ease-in-out;
-  transition-delay: 0s;
-}
-
-.sidebar-button:not(.collapsed)::after {
-  transform: rotate(-180deg);
 }
