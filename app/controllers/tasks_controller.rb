@@ -16,6 +16,14 @@ class TasksController < ApplicationController
     end
   end
 
+  def update_status
+    @task = Task.find(params[:id])
+    @task.update(status: params[:status])
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def edit
     @task = Task.find(params[:id])
     @categories = Category.all
@@ -40,6 +48,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :body, :category_id)
+    params.require(:task).permit(:title, :body, :category_id, :user_id)
   end
 end

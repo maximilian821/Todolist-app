@@ -1,21 +1,46 @@
 <div class="task">
-  <div class="row">
-    <div class="col-11">
-      <h3 class="mb-0"><%= task.title %></h3>     
-    </div>
-    <div class="col-1">
-      
-      <div class="dropdown">
-        <a class="dropdown-toggle fas fa-ellipsis-h" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <li><a class="dropdown-item" href="#">Mark as completed</a></li>
-          <li><a class="dropdown-item" href="<%= edit_task_path(task) %>">Edit task</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><%= link_to 'Delete task', task_path(task), data: {method: :delete, confirm: 'Are you sure?'}, class: 'dropdown-item' %></li>
-        </ul>
+
+  <div class="task-status">
+    <div class="row">
+      <div class="col-11">
+        <% if task.status == 'completed' %>
+        <div id="status-<%= task.id %>">Status: <span style="color: limegreen;">completed</span></div>
+        <% elsif task.status == 'uncompleted' %>
+        <div id="status-<%= task.id %>">Status: <span style="color: red;">uncompleted</span></div>
+        <% end %>
+      </div>
+      <div class="col-1">
+        <div class="dropdown">
+          <a class="dropdown-toggle fas fa-ellipsis-h" href="#" role="button" id="dropdownMenuLink"
+            data-bs-toggle="dropdown" aria-expanded="false">
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <li id="change-status-<%= task.id %>">
+              <% if task.status == 'uncompleted' %> 
+              <%= link_to 'Mark as completed', update_status_task_path(task, status: 'completed'), data: {method: :patch}, class: 'dropdown-item', remote: true %>
+              <% else %>
+              <%= link_to 'Mark as uncompleted', update_status_task_path(task, status: 'uncompleted'), data: {method: :patch}, class: 'dropdown-item', remote: true %>
+              <% end %>
+            </li>
+            <li><a class="dropdown-item" href="<%= edit_task_path(task) %>">Edit task</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Move to archive</a></li>
+            <li>
+              <%= link_to 'Delete task', task_path(task), data: {method: :delete, confirm: 'Are you sure?'}, class: 'dropdown-item' %>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
+
+  <% if task.status == 'completed' %>
+  <h3 class="mb-0 task-title" id="title<%= task.id %>" style="text-decoration: line-through"><%= task.title %></h3>
+  <% else %>
+  <h3 class="mb-0 task-title" id="title<%= task.id %>"><%= task.title %></h3>
+  <% end %>
+
   <p><%= task.body %></p>
 </div>
