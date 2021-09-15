@@ -3,18 +3,15 @@ Rails.application.routes.draw do
   root to: 'home#index'
   get 'app', to: 'home#app'
   get 'users', to: redirect('/app')
-  get 'app/tasks', to: redirect('/app')
   get 'app/category', to: redirect('/app')
   scope :app do
-    resources :tasks, except: [:index] do
+    resources :tasks do
       member do
         patch :update_status
       end
     end
   end
   scope :app do
-    resources :categories, except: [:index] do
-      resources :tasks, only: [:index]
-    end
+    resources :categories, except: [:index]
   end
 end
