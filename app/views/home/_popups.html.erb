@@ -7,9 +7,11 @@
       <% if defined?(@category) %>
       <div class="category-form">
         <%= form_with model: @category do |f| %>
-        <h2>Create new category</h2>
+
+        <input name="category[user_id]" type="hidden" value="<%= current_user.id %>" />
+        <h2 class="text-center">Create new category</h2>
         <div class="field">
-          <%= f.label :category_name %><br />
+          <%= f.label :category_name, 'Category name:' %><br />
           <%= f.text_field :name, class: 'form-control mb-3' %>
         </div>
         <div class="actions">
@@ -32,7 +34,8 @@
       <div class="category-form">
         <%= form_with model: @task do |f| %>
 
-        <h2>Create new task</h2>
+        <input name="task[user_id]" type="hidden" value="<%= current_user.id %>" />
+        <h2 class="text-center">Create new task</h2>
         <div class="field">
           <%= f.label :task_title, 'Task title:' %><br />
           <%= f.text_field :title, class: 'form-control mb-3' %>
@@ -44,7 +47,7 @@
         <div class="field mb-3">
           <label for="category-select">Select category:</label>
           <select id="category-select" class="form-select" size="3" name="task[category_id]" aria-label="size 3 select example">
-            <option selected>without category</option>
+            <option value="" selected>without category</option>
             <% @categories.each do |cat| %>
             <option value="<%= cat.id %>"><%= cat.name %></option>
             <% end %>
@@ -61,6 +64,7 @@
 </div>
 </div>
 
+<% if defined?(@task) || defined?(@category) %>
 <script>
   let popupsToggle = document.querySelectorAll('.open-popup');
   let popupsClose = document.querySelectorAll('.close');
@@ -85,3 +89,4 @@
     }
   }
 </script>
+<% end %>

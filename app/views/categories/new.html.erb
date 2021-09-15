@@ -2,6 +2,8 @@
   <div class="container app-form-container">
     <div class="app-form">
       <%= form_with model: @category do |f| %>
+
+      <input name="category[user_id]" type="hidden" value="<%= current_user.id %>" />
       <div class="field">
         <%= f.label :name, 'Category name:' %><br />
         <%= f.text_field :name, class: 'form-control mb-3' %>

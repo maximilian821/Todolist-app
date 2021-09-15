@@ -2,6 +2,8 @@
   <div class="container app-form-container">
     <div class="app-form">
       <%= form_with model: @task do |f| %>
+
+      <input name="task[user_id]" type="hidden" value="<%= current_user.id %>" />
       <div class="field">
         <%= f.label :title, 'Task title:' %><br />
         <%= f.text_field :title, class: 'form-control mb-3' %>
