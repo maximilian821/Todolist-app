@@ -1,0 +1,11 @@
+$('#controls').empty();
+
+<% if @task.archived? == true %>
+
+  $('#<%= @task.id %>').remove()
+
+<% else %>
+
+  $('#<%= @task.id %>').remove()
+
+<% end %>

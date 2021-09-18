@@ -21,11 +21,14 @@
             <a class="category-item add-category cat-p open-popup" data-popup="popup1">add category</a>
           </li>
           <li>
-            <p><a href="/app" data-params="no_category=true" data-turbolinks="false" class="category-item cat-p cat" data-remote="true">without category</a></p>
+            <p><a href="/app" data-params="no_category=true" data-turbolinks="false" class="category-item cat-p cat" data-remote="true"><b>without category</b></a></p>
           </li>
           <%= render partial: "category", collection: @categories %>
         </ul>
       </div>
     </div>
+  </li>
+  <li class="mb-1 sidebar-link mt-3">
+    <%= link_to 'Archive', tasks_path(archived: :true), class: 'app-link', remote: true %>
   </li>
 </ul>

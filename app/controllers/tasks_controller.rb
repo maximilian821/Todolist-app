@@ -2,12 +2,15 @@ class TasksController < ApplicationController
   def index
     if params[:completed] == 'true'
       @status = :completed
-      @tasks = Task.where(user_id: current_user.id).where(status: :completed).order(created_at: :asc)
+      @tasks = current_user.tasks.not_archived.where(status: :completed).order(created_at: :asc)
     elsif params[:uncompleted] == 'true'
       @status = :uncompleted
-      @tasks = Task.where(user_id: current_user.id).where(status: :uncompleted).order(created_at: :asc)
+      @tasks = current_user.tasks.not_archived.where(status: :uncompleted).order(created_at: :asc)
+    elsif params[:archived] == 'true'
+      @status = :archived
+      @tasks = current_user.tasks.only_archived.order(created_at: :asc)
     else
-      @tasks = Task.where(user_id: current_user.id).order(created_at: :desc)
+      @tasks = current_user.tasks.not_archived.order(created_at: :desc)
     end
 
     respond_to do |format|
@@ -23,7 +26,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-    @categories = Category.where(user_id: current_user.id)
+    @categories = current_user.categories
     if @task.save
       redirect_to app_url
     else
@@ -34,6 +37,14 @@ class TasksController < ApplicationController
   def update_status
     @task = Task.find(params[:id])
     @task.update(status: params[:status])
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def update_archived_field
+    @task = Task.find(params[:id])
+    @task.update(archived: params[:archived])
     respond_to do |format|
       format.js
     end

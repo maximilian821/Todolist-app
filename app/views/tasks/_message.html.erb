@@ -4,6 +4,8 @@
     <p>You don't have any completed tasks</p>
     <% elsif status == :uncompleted %>
     <p>You don't have any tasks to do</p>
+    <% elsif status == :archived %>
+    <p>You don't have any archived tasks</p>
     <% end %>
   </div>
 </div>

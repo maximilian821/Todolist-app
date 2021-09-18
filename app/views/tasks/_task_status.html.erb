@@ -10,8 +10,10 @@
       </div>
 
       <div class="task-status-text category-text">
-        <% if task.category %>
+        <% if task.category && !task.archived? %>
         Category: <%= task.category.name %>
+        <% elsif task.archived? %>
+        Archived
         <% end %>
       </div>
     </div>
@@ -32,7 +34,13 @@
           <li>
             <hr class="dropdown-divider">
           </li>
-          <li><a class="dropdown-item" href="#">Move to archive</a></li>
+          <li id="change-archived-status-<%= task.id %>">
+            <% if task.archived? == false %>
+            <%= link_to 'Move to archive', update_archived_field_task_path(task, archived: true), data: {method: :patch}, class: 'dropdown-item', remote: true %>
+            <% else %>
+            <%= link_to 'Remove from archive', update_archived_field_task_path(task, archived: false), data: {method: :patch}, class: 'dropdown-item', remote: true %>
+            <% end %>
+          </li>
           <li>
             <%= link_to 'Delete task', task_path(task), data: {method: :delete, confirm: 'Are you sure?'}, class: 'dropdown-item', remote: true %>
           </li>

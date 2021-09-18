@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :tasks do
       member do
         patch :update_status
+        patch :update_archived_field
       end
     end
   end
