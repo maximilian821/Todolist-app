@@ -6,7 +6,7 @@ class CategoriesController < ApplicationController
 
   def create
     @task = Task.new
-    @categories = Category.all
+    @categories = current_user.categories
     @category = Category.new(category_params)
     if @category.save
       redirect_to app_url

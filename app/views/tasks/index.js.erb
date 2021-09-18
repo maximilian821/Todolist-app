@@ -1,4 +1,5 @@
 $('#tasks').empty();
+$('#controls').empty();
 
 <% if @tasks.length == 0 %>
   $('#tasks').prepend("<%= j render partial: 'tasks/message', locals: {status: @status} %>");
